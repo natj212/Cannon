@@ -22,6 +22,9 @@ __meta__ = {
 frames = SubResource( 1 )
 offset = Vector2( 75, 0 )
 
+[node name="BarrelEnd" type="Position2D" parent="CannonSprite"]
+position = Vector2( 184, 0 )
+
 [node name="Stand" type="Sprite" parent="."]
 position = Vector2( -3, 35 )
 texture = ExtResource( 3 )

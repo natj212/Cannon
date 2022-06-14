@@ -3,6 +3,7 @@ extends Node2D
 
 # Declare member variables here. Examples:
 export var rot_speed = 20.0
+export var speed = 200.0
 var deg = 0
 var Ball = preload("res://Ball.tscn")
 
@@ -12,14 +13,20 @@ func _ready():
 	pass
 
 func _input(event):
-	if event is InputEventMouseButton:
-		var b = Ball.instance()
-		add_child(b)
-	elif event is InputEventMouseMotion:
+	if event.is_action_pressed("shoot"):
+		shoot()
+	if event is InputEventMouseMotion:
 		event = make_input_local(event)
 		var cx = event.position.x
 		var cy = event.position.y
 		deg = atan2(cy,cx) * (180 / PI)
+		
+func shoot():
+	var b = Ball.instance()
+	owner.add_child(b)
+	b.transform = $CannonSprite/BarrelEnd.global_transform
+	b.linear_velocity = b.transform.x * speed
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
