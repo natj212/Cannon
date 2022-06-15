@@ -5,4 +5,4 @@
 [node name="Root" type="Node2D"]
 
 [node name="Cannon" parent="." instance=ExtResource( 1 )]
-position = Vector2( 139, 323 )
+position = Vector2( 94, 640 )

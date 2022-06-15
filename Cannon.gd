@@ -6,6 +6,8 @@ export var rot_speed = 20.0
 export var speed = 200.0
 var deg = 0
 var Ball = preload("res://Ball.tscn")
+var rng: RandomNumberGenerator = RandomNumberGenerator.new()
+var canFire: bool = true
 
 
 # Called when the node enters the scene tree for the first time.
@@ -22,10 +24,25 @@ func _input(event):
 		deg = atan2(cy,cx) * (180 / PI)
 		
 func shoot():
+	if !canFire:
+		return
 	var b = Ball.instance()
 	owner.add_child(b)
 	b.transform = $CannonSprite/BarrelEnd.global_transform
+	#Makes to shoot in the direction it's facing
 	b.linear_velocity = b.transform.x * speed
+	#Makes the ball spin randomly
+	b.angular_velocity = rng.randf_range(-10,10)
+	$AnimationPlayer.play("Fire")
+	reload()
+	if rng.randf() > 0.5:
+		$Boom.play()
+	else:
+		$Pow.play()
+	
+func reload():
+	$Reload.start()
+	canFire = false
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -41,3 +58,9 @@ func _process(delta):
 	var rot = (min(abs(diff),rot_speed * delta * 10) * (1.0 if diff >= 0 else -1.0) ) 
 	$CannonSprite.rotation_degrees = rot + old_deg
 	
+
+
+func _on_Reload_timeout():
+	canFire = true
+	$AnimationPlayer.play("Idle")
+	$ReloadSound.play()
