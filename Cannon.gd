@@ -4,6 +4,7 @@ extends Node2D
 # Declare member variables here. Examples:
 export var rot_speed = 20.0
 export var speed = 200.0
+export var reload_time = 1.0
 var deg = 0
 var Ball = preload("res://Ball.tscn")
 var rng: RandomNumberGenerator = RandomNumberGenerator.new()
@@ -41,7 +42,7 @@ func shoot():
 		$Pow.play()
 	
 func reload():
-	$Reload.start()
+	get_tree().create_timer(reload_time).connect("timeout",self,"_on_timeout")
 	canFire = false
 	
 
@@ -60,7 +61,7 @@ func _process(delta):
 	
 
 
-func _on_Reload_timeout():
+func _on_timeout():
 	canFire = true
 	$AnimationPlayer.play("Idle")
 	$ReloadSound.play()
