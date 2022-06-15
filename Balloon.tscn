@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Assets/Ballon/balloon2.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Ballon/balloon3.png" type="Texture" id=2]
@@ -7,7 +7,19 @@
 [ext_resource path="res://Assets/Ballon/balloonburst2.png" type="Texture" id=5]
 [ext_resource path="res://Balloon.gd" type="Script" id=6]
 
-[sub_resource type="ShaderMaterial" id=3]
+[sub_resource type="Shader" id=8]
+code = "shader_type canvas_item;
+
+uniform vec4 balloon_color: hint_color = vec4(1.0);
+
+void fragment() {
+	COLOR = texture(TEXTURE, UV) * balloon_color;
+
+}"
+
+[sub_resource type="ShaderMaterial" id=9]
+shader = SubResource( 8 )
+shader_param/balloon_color = Color( 1, 0, 0, 1 )
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -69,7 +81,7 @@ tracks/0/keys = {
 }
 
 [node name="Balloon" type="RigidBody2D"]
-material = SubResource( 3 )
+material = SubResource( 9 )
 collision_layer = 2
 collision_mask = 4
 gravity_scale = 0.0
@@ -77,8 +89,12 @@ contacts_reported = 1
 contact_monitor = true
 applied_force = Vector2( -10, 0 )
 script = ExtResource( 6 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+use_parent_material = true
 frames = SubResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

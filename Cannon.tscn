@@ -50,11 +50,11 @@ tracks/0/keys = {
 length = 0.001
 
 [node name="Cannon" type="Node2D"]
+scale = Vector2( 0.5, 0.5 )
 script = ExtResource( 2 )
-__meta__ = {
-"_edit_group_": true
-}
 rot_speed = 5.0
+speed = 150.0
+reload_time = 3.0
 
 [node name="CannonSprite" type="AnimatedSprite" parent="."]
 position = Vector2( -1, 0 )
@@ -86,3 +86,5 @@ bus = "Sound Effects"
 [node name="Pow" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 7 )
 bus = "Sound Effects"
+
+[node name="BulletPath" type="Line2D" parent="."]

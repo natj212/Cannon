@@ -31,9 +31,9 @@ func shoot():
 	owner.add_child(b)
 	b.transform = $CannonSprite/BarrelEnd.global_transform
 	#Makes to shoot in the direction it's facing
-	b.linear_velocity = b.transform.x * speed
+	b.linear_velocity = b.transform.x * speed * 5
 	#Makes the ball spin randomly
-	b.angular_velocity = rng.randf_range(-10,10)
+	b.angular_velocity = rng.randf_range(-5,5)
 	$AnimationPlayer.play("Fire")
 	reload()
 	if rng.randf() > 0.5:

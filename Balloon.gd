@@ -1,14 +1,17 @@
 extends RigidBody2D
 
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+var rng = RandomNumberGenerator.new()
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	rng.randomize()
 	$AnimationPlayer.play("Idle")
+	var c = Color(rng.randf_range(0.5,1.0),
+	rng.randf_range(0.5,1.0),
+	rng.randf_range(0.5,1.0))
+	material.set_shader_param("balloon_color",c)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
