@@ -13,7 +13,7 @@ var canFire: bool = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
+	$AnimationPlayer.play("Ready")
 
 func _input(event):
 	if event.is_action_pressed("shoot"):
@@ -63,5 +63,5 @@ func _process(delta):
 
 func _on_timeout():
 	canFire = true
-	$AnimationPlayer.play("Idle")
+	$AnimationPlayer.play("Ready")
 	$ReloadSound.play()

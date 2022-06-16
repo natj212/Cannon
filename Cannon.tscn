@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Assets/cannon/cannon1.png" type="Texture" id=1]
 [ext_resource path="res://Cannon.gd" type="Script" id=2]
@@ -7,10 +7,11 @@
 [ext_resource path="res://Assets/Sounds/Boom.wav" type="AudioStream" id=5]
 [ext_resource path="res://Assets/Sounds/Reload.wav" type="AudioStream" id=6]
 [ext_resource path="res://Assets/Sounds/POW.wav" type="AudioStream" id=7]
+[ext_resource path="res://Assets/cannon/cannon3.png" type="Texture" id=8]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 1 ), ExtResource( 4 ) ],
+"frames": [ ExtResource( 1 ), ExtResource( 4 ), ExtResource( 8 ) ],
 "loop": false,
 "name": "default",
 "speed": 4.0
@@ -25,14 +26,56 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 1, 0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CannonSprite:offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 1 ]
+"update": 0,
+"values": [ Vector2( 110, 0 ) ]
 }
 
 [sub_resource type="Animation" id=3]
 resource_name = "Idle"
+
+[sub_resource type="Animation" id=4]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("CannonSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CannonSprite:offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 110, 0 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "Ready"
 tracks/0/type = "value"
 tracks/0/path = NodePath("CannonSprite:frame")
 tracks/0/interp = 1
@@ -43,11 +86,20 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ 0 ]
+"values": [ 2 ]
 }
-
-[sub_resource type="Animation" id=4]
-length = 0.001
+tracks/1/type = "value"
+tracks/1/path = NodePath("CannonSprite:offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 110, -25 ) ]
+}
 
 [node name="Cannon" type="Node2D"]
 scale = Vector2( 0.5, 0.5 )
@@ -69,6 +121,7 @@ position = Vector2( 179, 0 )
 anims/Fire = SubResource( 2 )
 anims/Idle = SubResource( 3 )
 anims/RESET = SubResource( 4 )
+anims/Ready = SubResource( 5 )
 
 [node name="Stand" type="Sprite" parent="."]
 position = Vector2( -3, 35 )
