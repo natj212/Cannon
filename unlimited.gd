@@ -1,4 +1,4 @@
-extends RigidBody2D
+extends "res://Game.gd"
 
 
 # Declare member variables here. Examples:
@@ -8,13 +8,17 @@ extends RigidBody2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	$Hearts.set_hearts(3)
 
-func _physics_process(delta):
-	#Get rid of out of bounds balls
-	if position.y > 900:
-		queue_free()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+
+
+func _on_BalloonSpawn_timeout():
+	spawn_balloon()
+
+
+func _on_BirdSpawn_timeout():
+	spawn_bird()

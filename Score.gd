@@ -10,7 +10,8 @@ func _ready():
 	pass # Replace with function body.
 
 func get_score():
-	return get_tree().get_root().get_node("Root").dead_balloons
+	var root = get_tree().get_root().get_node("Root")
+	return root.dead_balloons + root.dead_birds * 2
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

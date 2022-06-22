@@ -9,9 +9,12 @@ func _ready():
 	pass
 
 func remove_heart():
-	heart_list.back().queue_free()
-	heart_list.pop_back()
-	
+	if !heart_list.empty():
+		heart_list.back().queue_free()
+		heart_list.pop_back()
+	if heart_list.empty():
+		get_tree().get_root().get_node("Root").game_over()
+
 func remove_all_hearts():
 	while !heart_list.empty():
 		remove_heart()

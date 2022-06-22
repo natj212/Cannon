@@ -24,6 +24,7 @@ func pop():
 	$AnimationPlayer.play("Pop")
 	$PopSound.play()
 	emit_signal("dead_balloon")
+	contact_monitor = false
 
 
 func _on_AnimationPlayer_animation_finished(anim_name):
