@@ -105,7 +105,7 @@ tracks/1/keys = {
 scale = Vector2( 0.5, 0.5 )
 script = ExtResource( 2 )
 rot_speed = 5.0
-speed = 150.0
+speed = 140.0
 reload_time = 3.0
 
 [node name="CannonSprite" type="AnimatedSprite" parent="."]

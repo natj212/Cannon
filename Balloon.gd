@@ -1,18 +1,17 @@
 extends RigidBody2D
 
+signal dead_balloon
 
 var rng = RandomNumberGenerator.new()
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	rng.randomize()
 	$AnimationPlayer.play("Idle")
-	var c = Color(rng.randf_range(0.5,1.0),
-	rng.randf_range(0.5,1.0),
-	rng.randf_range(0.5,1.0))
-	material.set_shader_param("balloon_color",c)
+	
 
+func set_color(col):
+	material.set_shader_param("balloon_color",col)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
@@ -24,6 +23,7 @@ func _on_Balloon_body_entered(body):
 func pop():
 	$AnimationPlayer.play("Pop")
 	$PopSound.play()
+	emit_signal("dead_balloon")
 
 
 func _on_AnimationPlayer_animation_finished(anim_name):

@@ -1,12 +1,38 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Cannon.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Balloon.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Game.gd" type="Script" id=2]
+[ext_resource path="res://Bird.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Hearts.gd" type="Script" id=4]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 14.5, 352.5 )
 
 [node name="Root" type="Node2D"]
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="Cannon" parent="." instance=ExtResource( 1 )]
 position = Vector2( 95, 679 )
 
-[node name="Balloon" parent="." instance=ExtResource( 2 )]
-position = Vector2( 1187, 489 )
+[node name="Bird" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1158, 476 )
+
+[node name="Hearts" type="Node2D" parent="."]
+position = Vector2( 106, 58 )
+script = ExtResource( 4 )
+
+[node name="FinishLine" type="Area2D" parent="."]
+collision_layer = 6
+collision_mask = 6
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FinishLine"]
+modulate = Color( 0.658824, 0, 0, 1 )
+position = Vector2( 16, 352.5 )
+shape = SubResource( 1 )
+
+[connection signal="area_entered" from="FinishLine" to="." method="_on_FinishLine_area_entered"]
+[connection signal="body_entered" from="FinishLine" to="." method="_on_FinishLine_body_entered"]

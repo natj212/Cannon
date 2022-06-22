@@ -1,7 +1,5 @@
 extends Node2D
 
-
-# Declare member variables here. Examples:
 export var rot_speed = 20.0
 export var speed = 200.0
 export var reload_time = 1.0
