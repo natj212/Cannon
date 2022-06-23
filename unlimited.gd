@@ -4,6 +4,7 @@ extends "res://Game.gd"
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$Hearts.set_hearts(3)
+	$SpawnControl.play("spawn")
 	spawn_balloon()
 
 func get_score():

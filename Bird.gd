@@ -18,7 +18,7 @@ func _ready():
 #func _process(delta):
 #	pass
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	#Get rid of out of bounds
 	if position.y > 900:
 		queue_free()
@@ -31,7 +31,7 @@ func _physics_process(delta):
 		$AnimationPlayer.play("wings_down")
 
 
-func _on_Bird_body_entered(body):
+func _on_Bird_body_entered(_body):
 	flap = false
 	$AnimationPlayer.play("bird_dead")
 	$AudioStreamPlayer.play()

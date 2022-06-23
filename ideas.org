@@ -44,3 +44,5 @@
    Probably go with the time bombs
 ** TODO Pause menu with settings
    Figure out settings later
+** TODO Add more sound effects
+   Game over and lost life sound effects mostly
