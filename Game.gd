@@ -25,7 +25,7 @@ func game_over():
 	
 
 func get_random_pos():
-	return Vector2(1280,rng.randf_range(20,700))
+	return Vector2(1280,rng.randf_range(150,700))
 
 func get_random_color():
 	return Color(rng.randf_range(0.5,1.0),
@@ -47,13 +47,17 @@ func spawn_balloon():
 
 func _on_balloon_dead():
 	dead_balloons += 1
+	enemy_dead()
 
 func _on_bird_dead():
 	dead_birds += 1
+	enemy_dead()
 
-func _on_FinishLine_body_entered(body):
+func enemy_dead():
+	pass
+
+func _on_FinishLine_body_entered(_body):
 	$Hearts.remove_heart()
 
-
-func _on_Button_pressed():
+func _on_Okay_pressed():
 	get_tree().quit()

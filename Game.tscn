@@ -26,7 +26,6 @@ collision_mask = 2
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FinishLine"]
-modulate = Color( 0.658824, 0, 0, 1 )
 position = Vector2( 16, 352.5 )
 shape = SubResource( 1 )
 
@@ -43,7 +42,7 @@ margin_top = 4.0
 margin_right = 396.0
 margin_bottom = 96.0
 
-[node name="Label" type="Label" parent="GameOver/VBoxContainer"]
+[node name="GameOverLabel" type="Label" parent="GameOver/VBoxContainer"]
 margin_right = 392.0
 margin_bottom = 14.0
 input_pass_on_modal_close_click = false
@@ -53,16 +52,18 @@ __meta__ = {
 "_edit_use_anchors_": true
 }
 
-[node name="CenterContainer" type="CenterContainer" parent="GameOver"]
+[node name="CenterContainer" type="CenterContainer" parent="GameOver/VBoxContainer"]
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = -20.0
+margin_top = -92.0
+margin_right = -8.0
 
-[node name="Button" type="Button" parent="GameOver/CenterContainer"]
-margin_left = 178.0
-margin_right = 222.0
-margin_bottom = 20.0
+[node name="Okay" type="Button" parent="GameOver/VBoxContainer/CenterContainer"]
+margin_left = 170.0
+margin_top = 36.0
+margin_right = 214.0
+margin_bottom = 56.0
 text = "Okay"
 __meta__ = {
 "_edit_use_anchors_": true
@@ -70,4 +71,4 @@ __meta__ = {
 
 [connection signal="area_entered" from="FinishLine" to="." method="_on_FinishLine_area_entered"]
 [connection signal="body_entered" from="FinishLine" to="." method="_on_FinishLine_body_entered"]
-[connection signal="pressed" from="GameOver/CenterContainer/Button" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="GameOver/VBoxContainer/CenterContainer/Okay" to="." method="_on_Okay_pressed"]

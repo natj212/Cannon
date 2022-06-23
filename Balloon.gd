@@ -24,7 +24,8 @@ func pop():
 	$AnimationPlayer.play("Pop")
 	$PopSound.play()
 	emit_signal("dead_balloon")
-	contact_monitor = false
+	layers = 0
+	collision_mask = 0
 
 
 func _on_AnimationPlayer_animation_finished(anim_name):

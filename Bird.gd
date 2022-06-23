@@ -6,7 +6,7 @@ signal dead_bird
 # var a = 2
 # var b = "text"
 var start_height = 0
-export var flap_strength = 200
+export var flap_strength = 150
 var flap = true
 
 # Called when the node enters the scene tree for the first time.
@@ -23,10 +23,18 @@ func _physics_process(delta):
 	if position.y > 900:
 		queue_free()
 	if position.y >= start_height + 20 && linear_velocity.y > 0 && flap:
-		linear_velocity.y -= flap_strength
+		linear_velocity.y = -1 * flap_strength
+	
+	if linear_velocity.y > 0 && flap:
+		$AnimationPlayer.play("wings_up")
+	elif flap:
+		$AnimationPlayer.play("wings_down")
 
 
 func _on_Bird_body_entered(body):
 	flap = false
+	$AnimationPlayer.play("bird_dead")
+	$AudioStreamPlayer.play()
 	emit_signal("dead_bird")
-	contact_monitor = false
+	layers = 0
+	collision_mask = 0
