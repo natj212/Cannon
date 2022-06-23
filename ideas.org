@@ -1,0 +1,46 @@
+
+* Ideas
+
+** Have different Cannons you can purchase
+
+   - Have one cannon that shoots a rocket that travels straight and leave cloud particles behind
+   - Have one cannon that shoots 3 balls instead of one
+     - Each ball would be smaller
+   - Have a cannon that shoots a laser which slowly degrades enemies till they go away
+     - Have the enemies get darker or something to show they're getting destroyed
+   - Have exploding cannon balls that can destroy a range of enemies
+
+** Track a lot of different things
+
+   - Track the accuracy
+   - Track number of each enemy killed
+   - Track time
+
+** Have bonus items pop up
+
+   Each item would show up randomly on the screen and you'd have to hit it to get the bonus
+
+   - Coins that give you bonus money
+   - Extra hearts
+   - Power ups that make you shoot faster
+     
+* Enemy ideas
+ - A drone that spawns balloons and has 4 rotors you have to take out
+ - A slime that when you hit it splits into 2 slimes
+ - A paper airplane that moves quite fast
+ - An enemy that rotates around the center spawning balloons
+   - Maybe it's a hot air balloon
+ - A time bomb that stays in one spot and if you don't take it out in time it explodes losing you a heart
+   - Maybe shoots a projectile when it explodes to communicate that it takes out a heart. Or have a screen
+     wide effect to communicate the lost heart
+   - Either make it look like a pipe bomb with a blinking red light that beeps quicker or a big circular bomb
+     that's fuse burns down
+
+* Todo
+** TODO Add highscore
+** TODO Add items to purchase
+   Have it so you can upgrade the reload speed, cannon turning speed, cannon power
+** TODO Add extra enemy
+   Probably go with the time bombs
+** TODO Pause menu with settings
+   Figure out settings later
