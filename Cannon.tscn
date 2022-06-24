@@ -102,7 +102,6 @@ tracks/1/keys = {
 }
 
 [node name="Cannon" type="Node2D"]
-scale = Vector2( 0.5, 0.5 )
 script = ExtResource( 2 )
 rot_speed = 5.0
 speed = 140.0
@@ -110,6 +109,7 @@ reload_time = 3.0
 
 [node name="CannonSprite" type="AnimatedSprite" parent="."]
 position = Vector2( -1, 0 )
+scale = Vector2( 0.5, 0.5 )
 frames = SubResource( 1 )
 speed_scale = 0.25
 offset = Vector2( 110, 0 )
@@ -125,6 +125,7 @@ anims/Ready = SubResource( 5 )
 
 [node name="Stand" type="Sprite" parent="."]
 position = Vector2( -3, 35 )
+scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 3 )
 
 [node name="Boom" type="AudioStreamPlayer" parent="."]
@@ -140,4 +141,5 @@ bus = "Sound Effects"
 stream = ExtResource( 7 )
 bus = "Sound Effects"
 
-[node name="BulletPath" type="Line2D" parent="."]
+[node name="Trajectory" type="Line2D" parent="."]
+position = Vector2( 0, -720 )

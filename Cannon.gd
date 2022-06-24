@@ -7,11 +7,14 @@ var deg = 0
 var Ball = preload("res://Ball.tscn")
 var rng: RandomNumberGenerator = RandomNumberGenerator.new()
 var canFire: bool = true
+export var trajectory_points = 40
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$AnimationPlayer.play("Ready")
+	#Show trajectory line
+	$Trajectory.show()
 
 func _input(event):
 	if event.is_action_pressed("shoot"):
@@ -44,8 +47,7 @@ func reload():
 	canFire = false
 	
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _physics_process(delta):
 	var old_deg = $CannonSprite.rotation_degrees
 	var diff = deg - old_deg
 	# Prevents issue from when it goes from -180 to 180
@@ -56,8 +58,23 @@ func _process(delta):
 		
 	var rot = (min(abs(diff),rot_speed * delta * 10) * (1.0 if diff >= 0 else -1.0) ) 
 	$CannonSprite.rotation_degrees = rot + old_deg
-	
+	set_trajectory()
 
+func traj_pos(vel: Vector2, gravity, time):
+	var x = vel.x * time
+	var y = vel.y * time - (gravity * pow(time, 2.0) / 2.0)
+	return Vector2(x,y)
+
+func set_trajectory():
+	$Trajectory.global_position = $CannonSprite/BarrelEnd.global_position
+	$Trajectory.clear_points()
+	var vel = $CannonSprite/BarrelEnd.global_transform.x * speed * 5
+	var gravity = -98.0
+	var flight_time = (2 * vel.y) / gravity
+	for i in trajectory_points:
+		var t = i * (2 * flight_time / trajectory_points)
+		$Trajectory.add_point(traj_pos(vel,gravity,t))
+		
 
 func _on_timeout():
 	canFire = true

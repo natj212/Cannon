@@ -46,3 +46,5 @@
    Figure out settings later
 ** TODO Add more sound effects
    Game over and lost life sound effects mostly
+** TODO Add trajectory line
+   A line to show you the path of the balls trajectory
