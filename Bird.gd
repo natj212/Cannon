@@ -6,7 +6,7 @@ signal dead_bird
 # var a = 2
 # var b = "text"
 var start_height = 0
-export var flap_strength = 150
+@export var flap_strength = 150
 var flap = true
 
 # Called when the node enters the scene tree for the first time.
@@ -36,5 +36,5 @@ func _on_Bird_body_entered(_body):
 	$AnimationPlayer.play("bird_dead")
 	$AudioStreamPlayer.play()
 	emit_signal("dead_bird")
-	layers = 0
+	collision_layer = 0
 	collision_mask = 0

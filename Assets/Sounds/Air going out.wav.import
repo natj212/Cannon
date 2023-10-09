@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/Air going out.wav-88bc9cd5b2e0e665d04899c9f8efa468.sample"
+type="AudioStreamWAV"
+uid="uid://ciaypp0nwja6u"
+path="res://.godot/imported/Air going out.wav-88bc9cd5b2e0e665d04899c9f8efa468.sample"
 
 [deps]
 
 source_file="res://Assets/Sounds/Air going out.wav"
-dest_files=[ "res://.import/Air going out.wav-88bc9cd5b2e0e665d04899c9f8efa468.sample" ]
+dest_files=["res://.godot/imported/Air going out.wav-88bc9cd5b2e0e665d04899c9f8efa468.sample"]
 
 [params]
 
@@ -17,5 +18,7 @@ force/max_rate=false
 force/max_rate_hz=44100
 edit/trim=false
 edit/normalize=false
-edit/loop=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
 compress/mode=0

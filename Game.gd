@@ -33,16 +33,16 @@ func get_random_color():
 	rng.randf_range(0.5,1.0))
 
 func spawn_bird():
-	var b = bird.instance()
+	var b = bird.instantiate()
 	b.position = get_random_pos()
-	b.connect("dead_bird",self,"_on_bird_dead")
+	b.connect("dead_bird", Callable(self, "_on_bird_dead"))
 	add_child(b)
 
 func spawn_balloon():
-	var b = balloon.instance()
+	var b = balloon.instantiate()
 	b.position = get_random_pos()
 	b.modulate = get_random_color()
-	b.connect("dead_balloon",self,"_on_balloon_dead")
+	b.connect("dead_balloon", Callable(self, "_on_balloon_dead"))
 	add_child(b)
 
 func _on_balloon_dead():

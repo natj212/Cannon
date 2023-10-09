@@ -1,10 +1,10 @@
-[gd_resource type="AudioBusLayout" format=2]
+[gd_resource type="AudioBusLayout" format=3 uid="uid://bdjx31yww2sdq"]
 
 [resource]
-bus/0/volume_db = -0.328256
-bus/1/name = "Sound Effects"
+bus/0/volume_db = -8.79822
+bus/1/name = &"Sound Effects"
 bus/1/solo = false
 bus/1/mute = false
 bus/1/bypass_fx = false
 bus/1/volume_db = -0.130497
-bus/1/send = "Master"
+bus/1/send = &"Master"

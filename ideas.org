@@ -49,3 +49,11 @@
 ** DONE Add trajectory line
    CLOSED: [2022-06-23 Thu 23:45]
    A line to show you the path of the balls trajectory
+
+
+* Notes
+
+  
+** Damp
+
+   A damp of -1 seems to be the same as a damp of 0.1

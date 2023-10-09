@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/Kaw.wav-74a4c10b5af2da11c9ddb37cff83514c.sample"
+type="AudioStreamWAV"
+uid="uid://dcbgjb2kn1cpt"
+path="res://.godot/imported/Kaw.wav-74a4c10b5af2da11c9ddb37cff83514c.sample"
 
 [deps]
 
 source_file="res://Assets/Sounds/Kaw.wav"
-dest_files=[ "res://.import/Kaw.wav-74a4c10b5af2da11c9ddb37cff83514c.sample" ]
+dest_files=["res://.godot/imported/Kaw.wav-74a4c10b5af2da11c9ddb37cff83514c.sample"]
 
 [params]
 
@@ -17,5 +18,7 @@ force/max_rate=false
 force/max_rate_hz=44100
 edit/trim=false
 edit/normalize=false
-edit/loop=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
 compress/mode=0

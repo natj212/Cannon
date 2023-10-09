@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/POW.wav-1a561a147118478dcabc60fbaf505daf.sample"
+type="AudioStreamWAV"
+uid="uid://dhuonyqcy5d8o"
+path="res://.godot/imported/POW.wav-1a561a147118478dcabc60fbaf505daf.sample"
 
 [deps]
 
 source_file="res://Assets/Sounds/POW.wav"
-dest_files=[ "res://.import/POW.wav-1a561a147118478dcabc60fbaf505daf.sample" ]
+dest_files=["res://.godot/imported/POW.wav-1a561a147118478dcabc60fbaf505daf.sample"]
 
 [params]
 
@@ -17,5 +18,7 @@ force/max_rate=false
 force/max_rate_hz=44100
 edit/trim=false
 edit/normalize=false
-edit/loop=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
 compress/mode=0

@@ -1,13 +1,13 @@
 extends Node2D
 
-export var rot_speed = 20.0
-export var speed = 200.0
-export var reload_time = 1.0
+@export var rot_speed = 20.0
+@export var speed = 200.0
+@export var reload_time = 1.0
 var deg = 0
 var Ball = preload("res://Ball.tscn")
 var rng: RandomNumberGenerator = RandomNumberGenerator.new()
 var canFire: bool = true
-export var trajectory_points = 40
+@export var trajectory_points = 40
 
 
 # Called when the node enters the scene tree for the first time.
@@ -28,11 +28,11 @@ func _input(event):
 func shoot():
 	if !canFire:
 		return
-	var b = Ball.instance()
+	var b: RigidBody2D = Ball.instantiate()
 	owner.add_child(b)
 	b.transform = $CannonSprite/BarrelEnd.global_transform
 	#Makes to shoot in the direction it's facing
-	b.linear_velocity = b.transform.x * speed * 5
+	b.apply_impulse(b.transform.x * speed * 5)
 	#Makes the ball spin randomly
 	b.angular_velocity = rng.randf_range(-5,5)
 	$AnimationPlayer.play("Fire")
@@ -43,7 +43,7 @@ func shoot():
 		$Pow.play()
 	
 func reload():
-	get_tree().create_timer(reload_time).connect("timeout",self,"_on_timeout")
+	get_tree().create_timer(reload_time).connect("timeout", Callable(self, "_on_timeout"))
 	canFire = false
 	
 
@@ -58,7 +58,7 @@ func _physics_process(delta):
 		
 	var rot = (min(abs(diff),rot_speed * delta * 10) * (1.0 if diff >= 0 else -1.0) ) 
 	$CannonSprite.rotation_degrees = rot + old_deg
-	set_trajectory()
+	#set_trajectory()
 
 func traj_pos(vel: Vector2, gravity, time):
 	var x = vel.x * time

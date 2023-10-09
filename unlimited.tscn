@@ -1,117 +1,164 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=3 uid="uid://dsjeebj7m1jne"]
 
-[ext_resource path="res://Game.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Timer.gd" type="Script" id=2]
-[ext_resource path="res://Assets/Fonts/Orbitron Bold.ttf" type="DynamicFontData" id=3]
-[ext_resource path="res://unlimited.gd" type="Script" id=5]
+[ext_resource type="PackedScene" path="res://Game.tscn" id="1"]
+[ext_resource type="Script" path="res://Timer.gd" id="2"]
+[ext_resource type="FontFile" uid="uid://drdrcbxpovmxl" path="res://Assets/Fonts/Orbitron Bold.ttf" id="3"]
+[ext_resource type="Script" path="res://unlimited.gd" id="5"]
 
-[sub_resource type="DynamicFont" id=4]
-size = 40
-font_data = ExtResource( 3 )
+[sub_resource type="FontFile" id="4"]
+fallbacks = Array[Font]([ExtResource("3")])
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="FontFile" id="6"]
+fallbacks = Array[Font]([ExtResource("3")])
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
+
+[sub_resource type="Animation" id="3"]
 length = 0.001
 tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/path = NodePath("BalloonSpawn:wait_time")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [ 10.0 ]
+"values": [10.0]
 }
 tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
 tracks/1/path = NodePath("BirdSpawn:wait_time")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [ 10.0 ]
+"values": [10.0]
 }
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id="2"]
 resource_name = "spawn"
 length = 360.0
 step = 1.0
 tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/path = NodePath("BalloonSpawn:wait_time")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
 tracks/0/keys = {
-"points": PoolRealArray( 10, -0.25, 0, 0.25, 0, 4.80707, -0.25, 0, 0.25, 0, 5.00179, -0.25, 0, 0.25, 0, 1.95123, -0.25, 0, 0.25, 0, 0.5, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 60, 141, 221, 360 )
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
 }
 tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
 tracks/1/path = NodePath("BirdSpawn:wait_time")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
 tracks/1/keys = {
-"points": PoolRealArray(  ),
-"times": PoolRealArray(  )
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
 }
 tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
 tracks/2/path = NodePath("BirdSpawn")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 61 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [ -1 ],
-"method": "start"
-} ]
+"times": PackedFloat32Array(61),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [-1],
+"method": &"start"
+}]
 }
 
-[sub_resource type="DynamicFont" id=5]
-size = 40
-font_data = ExtResource( 3 )
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_52dy4"]
+_data = {
+"RESET": SubResource("3"),
+"spawn": SubResource("2")
+}
 
-[node name="Root" instance=ExtResource( 1 )]
-script = ExtResource( 5 )
+[sub_resource type="FontFile" id="5"]
+fallbacks = Array[Font]([ExtResource("3")])
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
+
+[node name="Root" instance=ExtResource("1")]
+script = ExtResource("5")
 
 [node name="Score" type="Label" parent="." index="1"]
-margin_left = 66.0
-margin_right = 256.0
-margin_bottom = 40.0
-custom_fonts/font = SubResource( 4 )
+offset_left = 66.0
+offset_right = 256.0
+offset_bottom = 40.0
+theme_override_fonts/font = SubResource("4")
 text = "Score: 0"
 
-[node name="BalloonSpawn" type="Timer" parent="." index="4"]
+[node name="Money" type="Label" parent="." index="2"]
+offset_left = 1032.0
+offset_top = 56.0
+offset_right = 1216.0
+offset_bottom = 104.0
+theme_override_fonts/font = SubResource("6")
+text = "Money: 0"
+
+[node name="BalloonSpawn" type="Timer" parent="." index="5"]
 wait_time = 10.0
 autostart = true
 
-[node name="BirdSpawn" type="Timer" parent="." index="5"]
+[node name="BirdSpawn" type="Timer" parent="." index="6"]
 wait_time = 10.0
 
+[node name="VBoxContainer" parent="GameOver" index="1"]
+offset_right = 96.0
+
+[node name="GameOverLabel" parent="GameOver/VBoxContainer" index="0"]
+layout_mode = 2
+
 [node name="HighScore" type="Label" parent="GameOver/VBoxContainer" index="1"]
-margin_right = 40.0
-margin_bottom = 14.0
+layout_mode = 2
 
-[node name="SpawnControl" type="AnimationPlayer" parent="." index="7"]
-anims/RESET = SubResource( 3 )
-anims/spawn = SubResource( 2 )
+[node name="CenterContainer" parent="GameOver/VBoxContainer" index="2"]
+layout_mode = 2
 
-[node name="Timer" type="Label" parent="." index="8"]
-margin_left = 1024.0
-margin_top = 8.0
-margin_right = 1240.0
-margin_bottom = 48.0
-custom_fonts/font = SubResource( 5 )
+[node name="Okay" parent="GameOver/VBoxContainer/CenterContainer" index="0"]
+layout_mode = 2
+
+[node name="SpawnControl" type="AnimationPlayer" parent="." index="8"]
+libraries = {
+"": SubResource("AnimationLibrary_52dy4")
+}
+
+[node name="Timer" type="Label" parent="." index="9"]
+offset_left = 1024.0
+offset_top = 8.0
+offset_right = 1240.0
+offset_bottom = 48.0
+theme_override_fonts/font = SubResource("5")
 text = "00:00.00"
-script = ExtResource( 2 )
+script = ExtResource("2")
 
 [connection signal="timeout" from="BalloonSpawn" to="." method="_on_BalloonSpawn_timeout"]
 [connection signal="timeout" from="BirdSpawn" to="." method="_on_BirdSpawn_timeout"]

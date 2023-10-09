@@ -1,102 +1,121 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=3 uid="uid://bt5gbo72cvmwh"]
 
-[ext_resource path="res://Assets/Ballon/balloon2.png" type="Texture" id=1]
-[ext_resource path="res://Assets/Ballon/balloon3.png" type="Texture" id=2]
-[ext_resource path="res://Assets/Ballon/balloon1.png" type="Texture" id=3]
-[ext_resource path="res://Assets/Ballon/balloonburst1.png" type="Texture" id=4]
-[ext_resource path="res://Assets/Ballon/balloonburst2.png" type="Texture" id=5]
-[ext_resource path="res://Balloon.gd" type="Script" id=6]
-[ext_resource path="res://Assets/Sounds/Air going out.wav" type="AudioStream" id=7]
+[ext_resource type="Texture2D" uid="uid://bly46ayorxxe2" path="res://Assets/Ballon/balloon2.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://dmspmqi1hg7u2" path="res://Assets/Ballon/balloon3.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://dvx2ey0ascj51" path="res://Assets/Ballon/balloon1.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://s2twvsjolfnn" path="res://Assets/Ballon/balloonburst1.png" id="4"]
+[ext_resource type="Texture2D" uid="uid://c5wb1hjl1mvwm" path="res://Assets/Ballon/balloonburst2.png" id="5"]
+[ext_resource type="Script" path="res://Balloon.gd" id="6"]
+[ext_resource type="AudioStream" uid="uid://ciaypp0nwja6u" path="res://Assets/Sounds/Air going out.wav" id="7"]
 
-[sub_resource type="SpriteFrames" id=1]
-animations = [ {
-"frames": [ ExtResource( 3 ), ExtResource( 1 ), ExtResource( 2 ), ExtResource( 4 ), ExtResource( 5 ) ],
+[sub_resource type="SpriteFrames" id="1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5")
+}],
 "loop": true,
-"name": "default",
+"name": &"default",
 "speed": 3.0
-} ]
+}]
 
-[sub_resource type="CapsuleShape2D" id=4]
+[sub_resource type="CapsuleShape2D" id="4"]
 radius = 20.0
+height = 52.5842
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id="5"]
 resource_name = "Idle"
 length = 2.0
-loop = true
+loop_mode = 1
 tracks/0/type = "value"
-tracks/0/path = NodePath("AnimatedSprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.6, 1.3 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PackedFloat32Array(0, 0.6, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [ 0, 1, 2 ]
+"values": [0, 1, 2]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id="6"]
 resource_name = "Pop"
 length = 0.4
 tracks/0/type = "value"
-tracks/0/path = NodePath("AnimatedSprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [ 3, 4 ]
+"values": [3, 4]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id="7"]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath("AnimatedSprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [ 0 ]
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yatij"]
+_data = {
+"Idle": SubResource("5"),
+"Pop": SubResource("6"),
+"RESET": SubResource("7")
 }
 
 [node name="Balloon" type="RigidBody2D"]
 collision_layer = 2
 collision_mask = 4
 gravity_scale = 0.0
-contacts_reported = 1
+max_contacts_reported = 1
 contact_monitor = true
-linear_velocity = Vector2( -50, 0 )
-linear_damp = 0.0
-script = ExtResource( 6 )
-__meta__ = {
-"_edit_group_": true
-}
+linear_velocity = Vector2(-50, 0)
+script = ExtResource("6")
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 use_parent_material = true
-frames = SubResource( 1 )
+sprite_frames = SubResource("1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -5, -28 )
+position = Vector2(-5, -28)
 rotation = -0.185005
-shape = SubResource( 4 )
+shape = SubResource("4")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/Idle = SubResource( 5 )
-anims/Pop = SubResource( 6 )
-anims/RESET = SubResource( 7 )
+libraries = {
+"": SubResource("AnimationLibrary_yatij")
+}
 
 [node name="PopSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 7 )
-bus = "Sound Effects"
+stream = ExtResource("7")
+bus = &"Sound Effects"
 
 [connection signal="body_entered" from="." to="." method="_on_Balloon_body_entered"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

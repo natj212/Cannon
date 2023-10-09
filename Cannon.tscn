@@ -1,145 +1,161 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=3 uid="uid://cpy5oi6acqxy2"]
 
-[ext_resource path="res://Assets/cannon/cannon1.png" type="Texture" id=1]
-[ext_resource path="res://Cannon.gd" type="Script" id=2]
-[ext_resource path="res://Assets/stand.png" type="Texture" id=3]
-[ext_resource path="res://Assets/cannon/cannon2.png" type="Texture" id=4]
-[ext_resource path="res://Assets/Sounds/Boom.wav" type="AudioStream" id=5]
-[ext_resource path="res://Assets/Sounds/Reload.wav" type="AudioStream" id=6]
-[ext_resource path="res://Assets/Sounds/POW.wav" type="AudioStream" id=7]
-[ext_resource path="res://Assets/cannon/cannon3.png" type="Texture" id=8]
+[ext_resource type="Texture2D" uid="uid://b8j6epfkx3tpn" path="res://Assets/cannon/cannon1.png" id="1"]
+[ext_resource type="Script" path="res://Cannon.gd" id="2"]
+[ext_resource type="Texture2D" uid="uid://vym005exeeyj" path="res://Assets/stand.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://jvr8eia3jltm" path="res://Assets/cannon/cannon2.png" id="4"]
+[ext_resource type="AudioStream" uid="uid://yjvucwjwrtb2" path="res://Assets/Sounds/Boom.wav" id="5"]
+[ext_resource type="AudioStream" uid="uid://bkfccebno6nhc" path="res://Assets/Sounds/Reload.wav" id="6"]
+[ext_resource type="AudioStream" uid="uid://dhuonyqcy5d8o" path="res://Assets/Sounds/POW.wav" id="7"]
+[ext_resource type="Texture2D" uid="uid://cxgh7fttggc0p" path="res://Assets/cannon/cannon3.png" id="8"]
 
-[sub_resource type="SpriteFrames" id=1]
-animations = [ {
-"frames": [ ExtResource( 1 ), ExtResource( 4 ), ExtResource( 8 ) ],
+[sub_resource type="SpriteFrames" id="1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8")
+}],
 "loop": false,
-"name": "default",
+"name": &"default",
 "speed": 4.0
-} ]
+}]
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id="2"]
 resource_name = "Fire"
 tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/path = NodePath("CannonSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [ 1, 0 ]
+"values": [1, 0]
 }
 tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
 tracks/1/path = NodePath("CannonSprite:offset")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [ Vector2( 110, 0 ) ]
+"values": [Vector2(110, 0)]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id="3"]
 resource_name = "Idle"
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id="4"]
 length = 0.001
 tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/path = NodePath("CannonSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [ 0 ]
+"values": [0]
 }
 tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
 tracks/1/path = NodePath("CannonSprite:offset")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [ Vector2( 110, 0 ) ]
+"values": [Vector2(110, 0)]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id="5"]
 resource_name = "Ready"
 tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/path = NodePath("CannonSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ 2 ]
+"values": [2]
 }
 tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
 tracks/1/path = NodePath("CannonSprite:offset")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [ Vector2( 110, -25 ) ]
+"values": [Vector2(110, -25)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_d2vt0"]
+_data = {
+"Fire": SubResource("2"),
+"Idle": SubResource("3"),
+"RESET": SubResource("4"),
+"Ready": SubResource("5")
 }
 
 [node name="Cannon" type="Node2D"]
-script = ExtResource( 2 )
+script = ExtResource("2")
 rot_speed = 5.0
-speed = 140.0
+speed = 250.0
 reload_time = 3.0
 
-[node name="CannonSprite" type="AnimatedSprite" parent="."]
-position = Vector2( -1, 0 )
-scale = Vector2( 0.5, 0.5 )
-frames = SubResource( 1 )
+[node name="CannonSprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(-1, 0)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("1")
 speed_scale = 0.25
-offset = Vector2( 110, 0 )
+offset = Vector2(110, 0)
 
-[node name="BarrelEnd" type="Position2D" parent="CannonSprite"]
-position = Vector2( 179, 0 )
+[node name="BarrelEnd" type="Marker2D" parent="CannonSprite"]
+position = Vector2(179, 0)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/Fire = SubResource( 2 )
-anims/Idle = SubResource( 3 )
-anims/RESET = SubResource( 4 )
-anims/Ready = SubResource( 5 )
+libraries = {
+"": SubResource("AnimationLibrary_d2vt0")
+}
 
-[node name="Stand" type="Sprite" parent="."]
-position = Vector2( -3, 35 )
-scale = Vector2( 0.5, 0.5 )
-texture = ExtResource( 3 )
+[node name="Stand" type="Sprite2D" parent="."]
+position = Vector2(-3, 35)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3")
 
 [node name="Boom" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 5 )
-bus = "Sound Effects"
+stream = ExtResource("5")
+bus = &"Sound Effects"
 
 [node name="ReloadSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 6 )
+stream = ExtResource("6")
 volume_db = -10.0
-bus = "Sound Effects"
+bus = &"Sound Effects"
 
 [node name="Pow" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 7 )
-bus = "Sound Effects"
+stream = ExtResource("7")
+bus = &"Sound Effects"
 
 [node name="Trajectory" type="Line2D" parent="."]
-position = Vector2( 0, -720 )
+position = Vector2(0, -720)

@@ -1,114 +1,126 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=3 uid="uid://dbxwxjrkyaqn"]
 
-[ext_resource path="res://Assets/Bird/bird1.png" type="Texture" id=1]
-[ext_resource path="res://Assets/Bird/bird2.png" type="Texture" id=2]
-[ext_resource path="res://Bird.gd" type="Script" id=3]
-[ext_resource path="res://Assets/Bird/bird3.png" type="Texture" id=4]
-[ext_resource path="res://Assets/Sounds/Kaw2.wav" type="AudioStream" id=5]
+[ext_resource type="Texture2D" uid="uid://daxvwkb8irdp4" path="res://Assets/Bird/bird1.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://c7bqx5ndf06bh" path="res://Assets/Bird/bird2.png" id="2"]
+[ext_resource type="Script" path="res://Bird.gd" id="3"]
+[ext_resource type="Texture2D" uid="uid://d2xyol3u315yu" path="res://Assets/Bird/bird3.png" id="4"]
+[ext_resource type="AudioStream" uid="uid://fwktfsl4ww64" path="res://Assets/Sounds/Kaw2.wav" id="5"]
 
-[sub_resource type="SpriteFrames" id=1]
-animations = [ {
-"frames": [ ExtResource( 1 ), ExtResource( 2 ), ExtResource( 4 ) ],
+[sub_resource type="SpriteFrames" id="1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4")
+}],
 "loop": true,
-"name": "default",
+"name": &"default",
 "speed": 5.0
-} ]
+}]
 
-[sub_resource type="CapsuleShape2D" id=2]
-radius = 36.9197
-height = 43.4282
+[sub_resource type="CapsuleShape2D" id="2"]
+radius = 29.3021
+height = 62.7203
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id="3"]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath("AnimatedSprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [ 0 ]
+"values": [0]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id="6"]
 resource_name = "bird_dead"
 tracks/0/type = "value"
-tracks/0/path = NodePath("AnimatedSprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ 2 ]
+"values": [2]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id="4"]
 resource_name = "wings_down"
 tracks/0/type = "value"
-tracks/0/path = NodePath("AnimatedSprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ 1 ]
+"values": [1]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id="5"]
 resource_name = "wings_up"
 tracks/0/type = "value"
-tracks/0/path = NodePath("AnimatedSprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ 0 ]
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hy3ou"]
+_data = {
+"RESET": SubResource("3"),
+"bird_dead": SubResource("6"),
+"wings_down": SubResource("4"),
+"wings_up": SubResource("5")
 }
 
 [node name="Bird" type="RigidBody2D"]
 collision_layer = 2
 collision_mask = 4
 mass = 5.0
-contacts_reported = 1
+max_contacts_reported = 1
 contact_monitor = true
-linear_velocity = Vector2( -50, 0 )
-linear_damp = 0.0
-script = ExtResource( 3 )
-__meta__ = {
-"_edit_group_": true
-}
+linear_velocity = Vector2(-50, 0)
+script = ExtResource("3")
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-scale = Vector2( 0.5, 0.5 )
-frames = SubResource( 1 )
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -4, -7 )
-rotation = -1.70136
-scale = Vector2( 0.5, 0.5 )
-shape = SubResource( 2 )
+position = Vector2(-4, -6)
+rotation = -1.66247
+scale = Vector2(0.685926, 0.957077)
+shape = SubResource("2")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/RESET = SubResource( 3 )
-anims/bird_dead = SubResource( 6 )
-anims/wings_down = SubResource( 4 )
-anims/wings_up = SubResource( 5 )
+libraries = {
+"": SubResource("AnimationLibrary_hy3ou")
+}
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 5 )
-bus = "Sound Effects"
+stream = ExtResource("5")
+bus = &"Sound Effects"
 
 [connection signal="body_entered" from="." to="." method="_on_Bird_body_entered"]

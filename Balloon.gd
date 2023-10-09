@@ -11,7 +11,7 @@ func _ready():
 	
 
 func set_color(col):
-	material.set_shader_param("balloon_color",col)
+	material.set_shader_parameter("balloon_color",col)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
@@ -24,7 +24,7 @@ func pop():
 	$AnimationPlayer.play("Pop")
 	$PopSound.play()
 	emit_signal("dead_balloon")
-	layers = 0
+	collision_layer = 0
 	collision_mask = 0
 
 
