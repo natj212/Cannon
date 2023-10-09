@@ -25,7 +25,7 @@ animations = [{
 
 [sub_resource type="CapsuleShape2D" id="2"]
 radius = 29.3021
-height = 62.7203
+height = 58.8397
 
 [sub_resource type="Animation" id="3"]
 length = 0.001
@@ -98,18 +98,19 @@ _data = {
 [node name="Bird" type="RigidBody2D"]
 collision_layer = 2
 collision_mask = 4
-mass = 5.0
+mass = 2.5
 max_contacts_reported = 1
 contact_monitor = true
-linear_velocity = Vector2(-50, 0)
 script = ExtResource("3")
+flap_strength = 1500
+initial_impuse = -10.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-4, -6)
+position = Vector2(-3, -7)
 rotation = -1.66247
 scale = Vector2(0.685926, 0.957077)
 shape = SubResource("2")

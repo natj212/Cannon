@@ -7,11 +7,14 @@ signal dead_bird
 # var b = "text"
 var start_height = 0
 @export var flap_strength = 150
+@export var initial_impuse = -100.0
 var flap = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	start_height = position.y
+	apply_impulse(Vector2(initial_impuse,0))
+	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -23,7 +26,7 @@ func _physics_process(_delta):
 	if position.y > 900:
 		queue_free()
 	if position.y >= start_height + 20 && linear_velocity.y > 0 && flap:
-		linear_velocity.y = -1 * flap_strength
+		apply_impulse(Vector2(-1 * flap_strength * 0.1,-1 * flap_strength))
 	
 	if linear_velocity.y > 0 && flap:
 		$AnimationPlayer.play("wings_up")

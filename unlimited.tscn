@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://dsjeebj7m1jne"]
 
-[ext_resource type="PackedScene" path="res://Game.tscn" id="1"]
+[ext_resource type="PackedScene" uid="uid://8ou6eoh6fug3" path="res://Game.tscn" id="1"]
 [ext_resource type="Script" path="res://Timer.gd" id="2"]
 [ext_resource type="FontFile" uid="uid://drdrcbxpovmxl" path="res://Assets/Fonts/Orbitron Bold.ttf" id="3"]
 [ext_resource type="Script" path="res://unlimited.gd" id="5"]
@@ -61,9 +61,9 @@ tracks/0/path = NodePath("BalloonSpawn:wait_time")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"handle_modes": PackedInt32Array(),
-"points": PackedFloat32Array(),
-"times": PackedFloat32Array()
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(10, -0.25, 0, 0.25, 0, 2.5, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 60)
 }
 tracks/1/type = "bezier"
 tracks/1/imported = false
@@ -83,7 +83,7 @@ tracks/2/path = NodePath("BirdSpawn")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(61),
+"times": PackedFloat32Array(1),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [-1],
@@ -131,19 +131,7 @@ autostart = true
 [node name="BirdSpawn" type="Timer" parent="." index="6"]
 wait_time = 10.0
 
-[node name="VBoxContainer" parent="GameOver" index="1"]
-offset_right = 96.0
-
-[node name="GameOverLabel" parent="GameOver/VBoxContainer" index="0"]
-layout_mode = 2
-
 [node name="HighScore" type="Label" parent="GameOver/VBoxContainer" index="1"]
-layout_mode = 2
-
-[node name="CenterContainer" parent="GameOver/VBoxContainer" index="2"]
-layout_mode = 2
-
-[node name="Okay" parent="GameOver/VBoxContainer/CenterContainer" index="0"]
 layout_mode = 2
 
 [node name="SpawnControl" type="AnimationPlayer" parent="." index="8"]
